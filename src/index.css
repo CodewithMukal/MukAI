@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import 'tailwindcss';
+@import 'tailwindcss-animated';
+
+.back{
+  background-image: url("./assets/bg.png");
+  width: 100vw;
+  height: 100vh;
+}
+.sel{
+  user-select: none;
+}
+.text{
+  background: linear-gradient(90deg, #0004FF 0%, #AB2DFF 40.87%, #BA3E40 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text2{
+  background: linear-gradient(169deg, rgba(153, 153, 153, 0.50) 21.05%, rgba(255, 255, 255, 0.50) 69.56%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.chat::-webkit-scrollbar {
+  width: 12px; /* Wider scrollbar */
+  margin-left: 20px; /* Increased left gap */
+}
+
+.chat::-webkit-scrollbar-track {
+  background: #5B5B5B;
+  border-radius: 10px;
+  margin-left: 20px; /* Match the left gap */
+}
+
+.chat::-webkit-scrollbar-thumb {
+  background: #3586F0;
+  border-radius: 10px;
+  border: 3px solid #5B5B5B; /* Increased padding effect */
+}
+
+.chat::-webkit-scrollbar-thumb:hover {
+  background: #2a6cd1;
+}
