@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AI from './AI';
-import SignUp from './Signup';
+import SignUp from './SignUp';
 import { Login } from './Login';
 import { Home } from './Home';
 import { ToastContainer } from 'react-toastify';

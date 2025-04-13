@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.svg";
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from 'react-markdown';
 
 export const AIMessage = ({ output, isLoading }) => {
+  const [displayedText, setDisplayedText] = useState("");
+
+  useEffect(() => {
+    if (!isLoading && output) {
+      setDisplayedText(output);
+    }
+  }, [output, isLoading]);
+
   return (
     <div className="flex flex-col items-start gap-[10px] mt-[20px] animate-fade-in">
       <div>
@@ -12,7 +20,7 @@ export const AIMessage = ({ output, isLoading }) => {
           className="w-[29px] h-[29px] rounded-b-[29px] rounded-tr-[29px]"
         />
       </div>
-      <div className="bg-[#424B57] inline-block max-w-[800px] pt-[25px] pb-[25px] pl-[15px] pr-[15px] rounded-b-[13px] rounded-tr-[13px] text-white font-semibold text-[16px] min-h-[60px]">
+      <div className="bg-[#424B57] inline-block max-w-[90%] pt-[25px] pb-[25px] pl-[15px] pr-[15px] rounded-b-[13px] rounded-tr-[13px] text-white font-semibold text-[16px] min-h-[60px]">
         {isLoading ? (
           <div className="flex gap-2">
             <div className="w-2 h-2 bg-white rounded-full animate-bounce" />
@@ -21,7 +29,7 @@ export const AIMessage = ({ output, isLoading }) => {
           </div>
         ) : (
           <ReactMarkdown>
-            {output}
+            {displayedText}
           </ReactMarkdown>
         )}
       </div>

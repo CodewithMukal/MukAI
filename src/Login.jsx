@@ -7,9 +7,13 @@ import google from "./assets/googleLogin.png";
 import facebook from "./assets/faceBook.png";
 import twitter from "./assets/twitterLogin.png";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "./components/Firebase";
 import { toast } from "react-toastify";
+import { setDoc, doc } from "firebase/firestore";
+import { db } from "./components/Firebase";
+
+const googleProvider = new GoogleAuthProvider();
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -26,6 +30,28 @@ export const Login = () => {
       toast.error(err.message)
     }
   }
+  const handleGoogleLogin = async () => {
+      try {
+        const result = await signInWithPopup(auth, googleProvider);
+        const user = result.user;
+        if (user) {
+          await setDoc(doc(db, "Users", user.uid), {
+            email: user.email,
+            username: user.displayName || "Google User",
+          });
+          toast.success("Logged in with Google!", {
+            position: "top-center",
+          });
+        }
+        navigate("/Home");
+      } catch (err) {
+        console.error(err.message);
+        toast.error(err.message, {
+          position: "bottom-center",
+        });
+        setError(err.message);
+      }
+    };
   return (
     <section className='back flex justify-center items-center relative font-["Montserrat"]'>
       <Header3 logo={logo} />
@@ -54,7 +80,7 @@ export const Login = () => {
         </button>
         <p className="font-bold text-white text-[20px]">or</p>
         <div className="flex gap-[29px]">
-          <Badges image={google} />
+          <Badges onClick={handleGoogleLogin} image={google} />
           <Badges image={facebook} />
           <Badges image={twitter} />
         </div>

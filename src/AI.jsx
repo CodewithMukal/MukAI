@@ -36,9 +36,9 @@ const AI = () => {
           >
             Get Started
           </button>
-          <button className="border-2 animate-fade-left animate-delay-800 hover:bg-[#41414145] w-[364px] h-[65px] text-[32px] font-bold rounded-[32.5px]">
+          <a href="https://www.instagram.com/ordinary_mukal" target="_blank" className="text-center flex justify-center items-center select-none border-2 animate-fade-left animate-delay-800 hover:bg-[#41414145] w-[364px] h-[65px] text-[32px] font-bold rounded-[32.5px]">
             About Me
-          </button>
+          </a>
         </div>
       </div>
     </section>
